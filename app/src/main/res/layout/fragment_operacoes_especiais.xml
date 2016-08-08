@@ -1,0 +1,201 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context=".view.fragments.OperacoesEspeciaisFragment"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@id/fragment_operacoes_especiais"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_row="0"
+    android:layout_column="1" >
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_row="0"
+        android:layout_column="1"
+        android:layout_weight="1">
+
+        <Button
+            style="@style/AppTheme.KeyBoard.OperacoesEspeciaisButtons"
+            android:layout_height="match_parent"
+            android:text="@string/keyboard_seno"
+            android:id="@+id/btn_sen"
+            android:layout_weight="1"/>
+
+        <Button
+            style="@style/AppTheme.KeyBoard.OperacoesEspeciaisButtons"
+            android:layout_height="match_parent"
+            android:text="@string/keyboard_cosseno"
+            android:layout_weight="1"
+            android:id="@+id/btn_cos" />
+
+        <Button
+            style="@style/AppTheme.KeyBoard.OperacoesEspeciaisButtons"
+            android:layout_height="match_parent"
+            android:text="@string/keyboard_tangente"
+            android:id="@+id/btn_tan"
+            android:layout_weight="1"/>
+
+        <Button
+            style="@style/AppTheme.KeyBoard.OperacoesEspeciaisButtons"
+            android:layout_height="match_parent"
+            android:text="@string/keyboard_fatorial"
+            android:id="@+id/btn_fatorial"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_row="1"
+        android:layout_column="1"
+        android:layout_weight="1">
+
+        <Button
+            style="@style/AppTheme.KeyBoard.OperacoesEspeciaisButtons"
+            android:layout_height="match_parent"
+            android:id="@+id/btn_arco_seno"
+            android:layout_weight="1"
+            android:text="@string/keyboard_arco_seno" />
+
+        <Button
+            style="@style/AppTheme.KeyBoard.OperacoesEspeciaisButtons"
+            android:layout_height="match_parent"
+            android:text="@string/keyboard_arco_cos"
+            android:layout_weight="1"
+            android:id="@+id/btn_arco_cos" />
+
+        <Button
+            style="@style/AppTheme.KeyBoard.OperacoesEspeciaisButtons"
+            android:layout_height="match_parent"
+            android:text="@string/keyboard_arco_tan"
+            android:id="@+id/btn_arco_tan"
+            android:layout_weight="1" />
+
+        <Button
+            style="@style/AppTheme.KeyBoard.OperacoesEspeciaisButtons"
+            android:layout_height="match_parent"
+            android:text="@string/keyboard_elevado_base_dez"
+            android:id="@+id/btn_arco_elevado_base_dez"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_row="3"
+        android:layout_column="1"
+        android:layout_weight="1">
+
+        <Button
+            style="@style/AppTheme.KeyBoard.OperacoesEspeciaisButtons"
+            android:layout_height="match_parent"
+            android:text="@string/keyboard_arco_cot"
+            android:id="@+id/btn_arco_cot"
+            android:layout_weight="1" />
+
+        <Button
+            style="@style/AppTheme.KeyBoard.OperacoesEspeciaisButtons"
+            android:layout_height="match_parent"
+            android:text="@string/keyboard_arco_sec"
+            android:layout_weight="1"
+            android:id="@+id/btn_arco_sec" />
+
+        <Button
+            style="@style/AppTheme.KeyBoard.OperacoesEspeciaisButtons"
+            android:layout_height="match_parent"
+            android:text="@string/keyboard_arco_cossec"
+            android:id="@+id/btn_arco_coss"
+            android:layout_weight="1" />
+
+        <Button
+            style="@style/AppTheme.KeyBoard.OperacoesEspeciaisButtons"
+            android:layout_height="match_parent"
+            android:text="@string/keyboard_log"
+            android:id="@+id/btn_arco_log"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_row="2"
+        android:layout_column="1"
+        android:layout_weight="1">
+
+        <Button
+            style="@style/AppTheme.KeyBoard.OperacoesEspeciaisButtons"
+            android:layout_height="match_parent"
+            android:text="@string/keyboard_mod"
+            android:id="@+id/btn_mod"
+            android:layout_weight="1" />
+
+        <Button
+            style="@style/AppTheme.KeyBoard.OperacoesEspeciaisButtons"
+            android:layout_height="match_parent"
+            android:text="@string/keyboard_dms"
+            android:layout_weight="1"
+            android:id="@+id/btn_dms" />
+
+        <Button
+            style="@style/AppTheme.KeyBoard.OperacoesEspeciaisButtons"
+            android:layout_height="match_parent"
+            android:text="@string/keyboard_int"
+            android:id="@+id/btn_int"
+            android:layout_weight="1" />
+
+        <Button
+            style="@style/AppTheme.KeyBoard.OperacoesEspeciaisButtons"
+            android:layout_height="match_parent"
+            android:text="@string/keyboard_fracao"
+            android:id="@+id/btn_fracao"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_row="4"
+        android:layout_column="1"
+        android:layout_weight="1">
+
+
+        <Button
+            style="@style/AppTheme.KeyBoard.OperacoesEspeciaisButtons"
+            android:layout_height="match_parent"
+            android:text="@string/keyboard_elevado_x_por_y"
+            android:id="@+id/btn_elevado_x_por_y"
+            android:layout_weight="1" />
+
+        <Button
+            style="@style/AppTheme.KeyBoard.OperacoesEspeciaisButtons"
+            android:layout_height="match_parent"
+            android:text="@string/keyboard_raiz_y"
+            android:layout_weight="1"
+            android:id="@+id/btn_raiz_y" />
+
+        <Button
+            style="@style/AppTheme.KeyBoard.OperacoesEspeciaisButtons"
+            android:layout_height="match_parent"
+            android:text="@string/keyboard_exp"
+            android:id="@+id/btn_exp"
+            android:layout_weight="1" />
+
+        <Button
+            style="@style/AppTheme.KeyBoard.OperacoesEspeciaisButtons"
+            android:layout_height="match_parent"
+            android:text="@string/keyboard_ln"
+            android:id="@+id/btn_ln"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+</LinearLayout>

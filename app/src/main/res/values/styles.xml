@@ -1,0 +1,53 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.KeyBoard">
+        <item name="android:textColor">@color/colorTextKeyBoard</item>
+        <item name="android:textSize">@dimen/keyboard</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="AppTheme.KeyBoard.NumberButtons">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:background">@color/colorKeyBoarNumberNormal</item>
+        <item name="android:foreground">@drawable/button_keyboard</item>
+    </style>
+
+    <style name="AppTheme.KeyBoard.OperacoesButtons">
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:background">@color/colorKeyBoarOperacoesNormal</item>
+        <item name="android:foreground">@drawable/button_operacoes</item>
+    </style>
+
+    <style name="AppTheme.KeyBoard.OperacoesEspeciaisButtons">
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:background">@color/colorKeyBoarOperacoesEspeciaisNormal</item>
+        <item name="android:foreground">@drawable/button_operacoes_especiais</item>
+    </style>
+
+    <style name="AppTheme.KeyBoard.ApagarButton">
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:background">@color/colorKayBoardApagarNormal</item>
+        <item name="android:foreground">@drawable/button_apagar</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+</resources>

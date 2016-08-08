@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">CalculadoraGEC5</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- KeyBoard de Numeros -->
+    <string name="kayboard_0" translatable="false">0</string>
+    <string name="kayboard_1" translatable="false">1</string>
+    <string name="kayboard_2" translatable="false">2</string>
+    <string name="kayboard_3" translatable="false">3</string>
+    <string name="kayboard_4" translatable="false">4</string>
+    <string name="kayboard_5" translatable="false">5</string>
+    <string name="kayboard_6" translatable="false">6</string>
+    <string name="kayboard_7" translatable="false">7</string>
+    <string name="kayboard_8" translatable="false">8</string>
+    <string name="kayboard_9" translatable="false">9</string>
+
+    <!-- KeyBoard Memoria -->
+    <string name="keyboard_m_minus" translatable="false">M-</string>
+    <string name="keyboard_m_plus" translatable="false">M+</string>
+    <string name="keyboard_m_store" translatable="false">MS</string>
+    <string name="keyboard_m_recall" translatable="false">MR</string>
+
+    <!-- KeyBoard Operações -->
+    <string name="keyboard_ponto" translatable="false">.</string>
+    <string name="keyboard_igual" translatable="false">=</string>
+    <string name="keyboard_somar" translatable="false">+</string>
+    <string name="keyboard_subtrair" translatable="false">-</string>
+    <string name="keyboard_multiplicar" translatable="false">&#215;</string>
+    <string name="keyboard_dividir" translatable="false">&#247;</string>
+    <string name="keyboard_resto" translatable="false">%</string>
+    <string name="keyboard_mudar_sinal" translatable="false">&#177;</string>
+    <string name="keyboard_raiz" translatable="false">&#8730;</string>
+
+    <!-- KeyBoard Operações Especiais -->
+    <string name="keyboard_seno" translatable="false">sen</string>
+    <string name="keyboard_cosseno" translatable="false">cos</string>
+    <string name="keyboard_tangente" translatable="false">tan</string>
+    <string name="keyboard_arco_seno" translatable="false">sen&lt;sup&gt;&lt;small&gt;-1&lt;/sup&gt;&lt;/small&gt;</string>
+    <string name="keyboard_arco_tan" translatable="false">tan&lt;sup&gt;&lt;small&gt;-1&lt;/sup&gt;&lt;/small&gt;</string>
+    <string name="keyboard_arco_cos" translatable="false">cos&lt;sup&gt;&lt;small&gt;-1&lt;/sup&gt;&lt;/small&gt;</string>
+    <string name="keyboard_arco_sec" translatable="false">sec&lt;sup&gt;&lt;small&gt;-1&lt;/sup&gt;&lt;/small&gt;</string>
+    <string name="keyboard_arco_cossec" translatable="false">coss&lt;sup&gt;&lt;small&gt;-1&lt;/sup&gt;&lt;/small&gt;</string>
+    <string name="keyboard_arco_cot" translatable="false">cot&lt;sup&gt;&lt;small&gt;-1&lt;/sup&gt;&lt;/small&gt;</string>
+    <string name="keyboard_fatorial" translatable="false">n!</string>
+    <string name="keyboard_elevado_base_dez" translatable="false">10&lt;sup&gt;&lt;small&gt;x&lt;/sup&gt;&lt;/small&gt;</string>
+    <string name="keyboard_fracao" translatable="false">&lt;sup&gt;&lt;small&gt;1&lt;/sup&gt;&lt;/small&gt;/x</string>
+    <string name="keyboard_mod" translatable="false">mod</string>
+    <string name="keyboard_dms" translatable="false">dms</string>
+    <string name="keyboard_int" translatable="false">int</string>
+    <string name="keyboard_log" translatable="false">log</string>
+    <string name="keyboard_raiz_y" translatable="false">&lt;sup&gt;&lt;small&gt;y&lt;/sup&gt;&lt;/small&gt;&#8730;x</string>
+    <string name="keyboard_elevado_x_por_y" translatable="false">x&lt;sup&gt;&lt;small&gt;y&lt;/sup&gt;&lt;/small&gt;</string>
+    <string name="keyboard_exp" translatable="false">exp</string>
+    <string name="keyboard_ln" translatable="false">ln</string>
+    <string name="menu_sobre">Sobre</string>
+    <string name="menu_opcoes">Opções</string>
+    <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="menu_vetores">Vetores</string>
+    <string name="menu_matrizes">Matrizes</string>
+    <string name="menu_polinomios">Polinômios</string>
+    <string name="menu_graficos">Gráficos</string>
+    <string name="menu_title_basico">Operações Básicas</string>
+    <string name="menu_porcentagem">Porcentagem</string>
+    <string name="menu_conversoes">Conversões</string>
+    <string name="menu_primo">Primos</string>
+    <string name="menu_regra_tres">Regra de Três</string>
+    <string name="menu_fracoes">Frações</string>
+</resources>

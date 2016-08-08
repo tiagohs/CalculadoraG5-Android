@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="1"
+    tools:context=".view.fragments.InputFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_input_secundario"
+        android:fontFamily="sans-serif-thin"
+        android:textSize="@dimen/input_secundario"
+        android:background="@android:color/white"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:fontFamily="sans-serif-thin"
+        android:background="@android:color/white"
+        android:id="@+id/txt_input_principal"
+        android:textSize="@dimen/input_principal"
+        android:gravity="center|right"
+        android:paddingEnd="5sp" />
+</LinearLayout>
