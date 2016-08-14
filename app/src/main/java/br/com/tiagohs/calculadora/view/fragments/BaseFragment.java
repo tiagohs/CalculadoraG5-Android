@@ -23,8 +23,6 @@ public abstract class BaseFragment extends Fragment {
         return inflater.inflate(getFragmentView(), container, false);
     }
 
-
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

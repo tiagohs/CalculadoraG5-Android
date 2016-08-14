@@ -1,12 +1,15 @@
 package br.com.tiagohs.calculadora.presenter;
 
-import br.com.tiagohs.calculadora.view.InputView;
+import br.com.tiagohs.calculadora.view.CalculadoraView;
 
-public class InputPresenterImpl implements InputPresenter {
-    private InputView view;
+/**
+ * Created by Tiago Henrique on 14/08/2016.
+ */
+public class CalculadoraPresenterImpl implements CalculadoraPresenter {
+    private CalculadoraView view;
 
     @Override
-    public void setView(InputView view) {
+    public void setView(CalculadoraView view) {
         this.view = view;
     }
 
@@ -20,5 +23,15 @@ public class InputPresenterImpl implements InputPresenter {
 
     private boolean containsValores(String valorAtual) {
         return valorAtual != null || !valorAtual.isEmpty();
+    }
+
+    @Override
+    public void onClickKeyboard(String value) {
+        view.displayInputPrincipal(value);
+    }
+
+    @Override
+    public void onClickOperador(String value) {
+
     }
 }

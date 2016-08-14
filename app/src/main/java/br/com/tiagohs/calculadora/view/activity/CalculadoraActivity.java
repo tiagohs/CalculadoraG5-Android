@@ -3,6 +3,7 @@ package br.com.tiagohs.calculadora.view.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -11,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import br.com.tiagohs.calculadora.R;
+import br.com.tiagohs.calculadora.view.fragments.CalculadoraFragment;
 import butterknife.BindView;
 
 public class CalculadoraActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -32,14 +34,18 @@ public class CalculadoraActivity extends BaseActivity implements NavigationView.
 
         setSupportActionBar(mToolbar);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         configurarDrawerLayout();
         mNavigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
-    protected int getActivityLayout() {
-        return R.layout.activity_calculadora;
+    protected Fragment createFragment() {
+        return new CalculadoraFragment();
     }
+
 
     private void configurarDrawerLayout() {
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

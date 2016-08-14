@@ -7,17 +7,8 @@ import dagger.Provides;
 public class PresenterModule {
 
     @Provides
-    public InputPresenter providesInputPresenter() {
-        return new InputPresenterImpl();
+    public CalculadoraPresenter providesCalculadoraPresenter() {
+        return new CalculadoraPresenterImpl();
     }
 
-    @Provides
-    public KeyboardPresenter providesKeyboardPresenter() {
-        return new KeyboardPresenterImpl();
-    }
-
-    @Provides
-    public OperacoesEspeciaisPresenter providesOperacoesEspeciaisPresenter() {
-        return new OperacoesEspeciaisPresenterImpl();
-    }
 }

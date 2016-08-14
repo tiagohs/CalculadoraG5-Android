@@ -4,8 +4,7 @@ import javax.inject.Singleton;
 
 import br.com.tiagohs.calculadora.presenter.PresenterModule;
 import br.com.tiagohs.calculadora.view.activity.CalculadoraActivity;
-import br.com.tiagohs.calculadora.view.fragments.InputFragment;
-import br.com.tiagohs.calculadora.view.fragments.KeyboardFragment;
+import br.com.tiagohs.calculadora.view.fragments.CalculadoraFragment;
 import dagger.Component;
 
 
@@ -14,6 +13,5 @@ import dagger.Component;
 public interface CalculadoraComponent {
 
     void inject(CalculadoraActivity activity);
-    void inject(InputFragment inputFragment);
-    void inject(KeyboardFragment keyboard);
+    void inject(CalculadoraFragment inputFragment);
 }
