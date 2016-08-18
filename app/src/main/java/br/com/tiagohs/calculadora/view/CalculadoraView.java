@@ -12,4 +12,5 @@ public interface CalculadoraView {
     void displayInputSecundario(String valor);
     void onClickKeyBoard(View view);
     void onClickOperador(View view);
+    void onClickEquals();
 }

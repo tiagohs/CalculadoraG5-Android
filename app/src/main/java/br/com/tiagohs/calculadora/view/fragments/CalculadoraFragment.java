@@ -12,12 +12,17 @@ import br.com.tiagohs.calculadora.App;
 import br.com.tiagohs.calculadora.R;
 import br.com.tiagohs.calculadora.presenter.CalculadoraPresenter;
 import br.com.tiagohs.calculadora.util.KeyBoardUtils;
+import br.com.tiagohs.calculadora.util.OperationType;
 import br.com.tiagohs.calculadora.view.CalculadoraView;
 import butterknife.BindView;
 import butterknife.OnClick;
+import butterknife.OnLongClick;
 
 public class CalculadoraFragment extends BaseFragment implements CalculadoraView {
+    private static final String TAG = CalculadoraFragment.class.getSimpleName();
 
+    private static final String INPUT_PRINCIPAL_STATE = "InputPrincipal";
+    private static final String INPUT_SECUNDARIO_STATE = "InputSecundario";
 
     @BindView(R.id.txt_input_principal)
     TextView mInputPrincipal;
@@ -59,12 +64,27 @@ public class CalculadoraFragment extends BaseFragment implements CalculadoraView
     CalculadoraPresenter presenter;
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ((App) getActivity().getApplication()).getComponent().inject(this);
 
         presenter.setView(this);
 
+        if (savedInstanceState != null) {
+            mInputPrincipal.setText(savedInstanceState.getString(INPUT_PRINCIPAL_STATE));
+            mInputSecundario.setText(savedInstanceState.getString(INPUT_SECUNDARIO_STATE));
+        }
+
+        configureTextButtons();
+        }
+
+    private void configureTextButtons() {
         KeyBoardUtils.formatarBotoesEspeciais(btnOperacaoArcoCos, getContext(), R.id.btn_arco_cos, R.string.keyboard_arco_cos);
         KeyBoardUtils.formatarBotoesEspeciais(btnOperacaoArcoTan, getContext(), R.id.btn_arco_tan, R.string.keyboard_arco_tan);
         KeyBoardUtils.formatarBotoesEspeciais(btnOperacaoArcoSen, getContext(), R.id.btn_arco_seno, R.string.keyboard_arco_seno);
@@ -78,8 +98,21 @@ public class CalculadoraFragment extends BaseFragment implements CalculadoraView
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(INPUT_PRINCIPAL_STATE, mInputPrincipal.getText().toString());
+        outState.putString(INPUT_SECUNDARIO_STATE, mInputSecundario.getText().toString());
+    }
+
+    @Override
     public int getFragmentView() {
         return R.layout.calculadora_fragment;
+    }
+
+    @OnLongClick(R.id.btn_keyboard_apagar)
+    public boolean apagarTudo() {
+        presenter.apagarTudo(mInputPrincipal.getText().toString(), mInputSecundario.getText().toString());
+        return true;
     }
 
     @Override
@@ -100,15 +133,44 @@ public class CalculadoraFragment extends BaseFragment implements CalculadoraView
     @OnClick({R.id.btn_keyboard_1, R.id.btn_keyboard_2, R.id.btn_keyboard_3,
             R.id.btn_keyboard_4, R.id.btn_keyboard_5, R.id.btn_keyboard_6,
             R.id.btn_keyboard_7, R.id.btn_keyboard_8, R.id.btn_keyboard_9, R.id.btn_keyboard_0})
-    @Override
     public void onClickKeyBoard(View view) {
-        presenter.onClickKeyboard(((Button) view).getText().toString());
+        presenter.onCheckKeyboard(((Button) view).getText().toString(), mInputPrincipal.getText().toString());
     }
 
-    @OnClick({R.id.btn_keyboard_apagar})
-    @Override
+    @OnClick({R.id.btn_keyboard_apagar, R.id.btn_keyboard_soma, R.id.btn_keyboard_subt,
+            R.id.btn_keyboard_mult, R.id.btn_keyboard_div})
     public void onClickOperador(View view) {
-        apagarUltimaValor();
+
+        switch (view.getId()) {
+            case R.id.btn_keyboard_soma:
+                onClickOperador(OperationType.SOMA);
+                break;
+            case R.id.btn_keyboard_subt:
+                onClickOperador(OperationType.SUBTRACAO);
+                break;
+            case R.id.btn_keyboard_mult:
+                onClickOperador(OperationType.MULTIPLICACAO);
+                break;
+            case R.id.btn_keyboard_div:
+                onClickOperador(OperationType.DIVISAO);
+                break;
+            case R.id.btn_keyboard_apagar:
+                apagarUltimaValor();
+                break;
+        }
+
+    }
+
+    private void onClickOperador(OperationType operacaoAtual) {
+        String displayAtual = mInputPrincipal.getText().toString();
+        String displaySub = mInputSecundario.getText().toString();
+
+        presenter.onCheckOperation(displayAtual, displaySub, operacaoAtual);
+    }
+
+    @OnClick(R.id.btn_keyboard_igual)
+    public void onClickEquals() {
+        presenter.onCheckResult(mInputPrincipal.getText().toString());
     }
 
 }

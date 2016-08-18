@@ -1,5 +1,6 @@
 package br.com.tiagohs.calculadora.presenter;
 
+import br.com.tiagohs.calculadora.util.OperationType;
 import br.com.tiagohs.calculadora.view.CalculadoraView;
 
 /**
@@ -9,6 +10,8 @@ public interface CalculadoraPresenter {
 
     void setView(CalculadoraView view);
     void apagarUltimoValorInputPrincipal(String valorAtual);
-    void onClickKeyboard(String value);
-    void onClickOperador(String value);
+    void onCheckOperation(String displayAtual, String displaySub, OperationType operacaoAtual);
+    void onCheckKeyboard(String novoValor, String valorAtual);
+    void onCheckResult(String displayAtual);
+    void apagarTudo(String valorAtual, String valorSubAtual);
 }

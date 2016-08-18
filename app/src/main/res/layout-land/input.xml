@@ -13,7 +13,8 @@
         android:fontFamily="sans-serif-thin"
         android:textSize="@dimen/input_secundario"
         android:background="@android:color/white"
-        android:paddingLeft="5dp"
+        android:gravity="center|right"
+        android:paddingLeft="10dp"
         android:paddingTop="5dp" />
 
     <TextView
@@ -24,5 +25,7 @@
         android:id="@+id/txt_input_principal"
         android:textSize="@dimen/input_principal"
         android:gravity="center|right"
-        android:paddingEnd="5sp" />
+        android:paddingLeft="10dp"
+        android:paddingEnd="5dp"
+        android:layout_marginBottom="5dp"/>
 </LinearLayout>

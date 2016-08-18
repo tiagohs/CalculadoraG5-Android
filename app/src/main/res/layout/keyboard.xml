@@ -14,12 +14,12 @@
         android:layout_height="match_parent">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            tools:context=".view.fragments.KeyboardFragment"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:orientation="vertical"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                      tools:context=".view.fragments.KeyboardFragment"
+                      xmlns:tools="http://schemas.android.com/tools"
+                      android:orientation="vertical"
+                      android:layout_weight="1"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -31,31 +31,31 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="0.75">
+                    android:layout_weight="0.65">
 
                     <Button
-                        style="@style/AppTheme.KeyBoard.OperacoesButtons"
+                        style="@style/AppTheme.KeyBoard.OperacoesButtons.Memory"
                         android:layout_height="match_parent"
                         android:text="@string/keyboard_m_minus"
                         android:id="@+id/btn_keyboard_m_minus"
                         android:layout_weight="1"/>
 
                     <Button
-                        style="@style/AppTheme.KeyBoard.OperacoesButtons"
+                        style="@style/AppTheme.KeyBoard.OperacoesButtons.Memory"
                         android:layout_height="match_parent"
                         android:text="@string/keyboard_m_plus"
                         android:layout_weight="1"
                         android:id="@+id/btn_keyboard_m_plus" />
 
                     <Button
-                        style="@style/AppTheme.KeyBoard.OperacoesButtons"
+                        style="@style/AppTheme.KeyBoard.OperacoesButtons.Memory"
                         android:layout_height="match_parent"
                         android:text="@string/keyboard_m_store"
                         android:id="@+id/btn_keyboard_m_s"
                         android:layout_weight="1"/>
 
                     <Button
-                        style="@style/AppTheme.KeyBoard.OperacoesButtons"
+                        style="@style/AppTheme.KeyBoard.OperacoesButtons.Memory"
                         android:layout_height="match_parent"
                         android:text="@string/keyboard_m_recall"
                         android:id="@+id/btn_keyboard_m_r"
@@ -127,10 +127,10 @@
                     android:id="@+id/btn_keyboard_9"
                     android:layout_weight="1" />
 
-                <Button
+                <ImageButton
                     style="@style/AppTheme.KeyBoard.ApagarButton"
                     android:layout_height="match_parent"
-                    android:text="C"
+                    android:src="@drawable/ic_delete"
                     android:id="@+id/btn_keyboard_apagar"
                     android:layout_weight="1" />
 
@@ -246,11 +246,9 @@
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="18"
-            android:background="@color/colorKeyBoarOperacoesEspeciaisNormal"
-            android:backgroundTint="@color/colorKeyBoarOperacoesEspeciaisNormal"
-            android:foreground="@color/colorKeyBoarOperacoesEspeciaisNormal" />
+            android:background="@color/colorKeyBoarOperacoesEspeciaisNormal" />
 
     </LinearLayout>
 
