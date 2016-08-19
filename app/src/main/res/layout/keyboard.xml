@@ -34,32 +34,32 @@
                     android:layout_weight="0.65">
 
                     <Button
-                        style="@style/AppTheme.KeyBoard.OperacoesButtons.Memory"
+                        style="@style/AppTheme.KeyBoard.OperacoesButtons"
                         android:layout_height="match_parent"
-                        android:text="@string/keyboard_m_minus"
-                        android:id="@+id/btn_keyboard_m_minus"
-                        android:layout_weight="1"/>
-
-                    <Button
-                        style="@style/AppTheme.KeyBoard.OperacoesButtons.Memory"
-                        android:layout_height="match_parent"
-                        android:text="@string/keyboard_m_plus"
+                        android:text="@string/keyboard_parenteses_esquerdo"
                         android:layout_weight="1"
-                        android:id="@+id/btn_keyboard_m_plus" />
+                        android:id="@+id/btn_keyboard_parenteses_esquerdo" />
 
                     <Button
-                        style="@style/AppTheme.KeyBoard.OperacoesButtons.Memory"
+                        style="@style/AppTheme.KeyBoard.OperacoesButtons"
                         android:layout_height="match_parent"
-                        android:text="@string/keyboard_m_store"
-                        android:id="@+id/btn_keyboard_m_s"
-                        android:layout_weight="1"/>
+                        android:text="@string/keyboard_parenteses_direito"
+                        android:id="@+id/btn_keyboard_parenteses_direito"
+                        android:layout_weight="1" />
 
                     <Button
-                        style="@style/AppTheme.KeyBoard.OperacoesButtons.Memory"
+                        style="@style/AppTheme.KeyBoard.OperacoesButtons"
                         android:layout_height="match_parent"
-                        android:text="@string/keyboard_m_recall"
-                        android:id="@+id/btn_keyboard_m_r"
-                        android:layout_weight="1"/>
+                        android:text="@string/keyboard_mudar_sinal"
+                        android:id="@+id/btn_keyboard_mudar_sinal"
+                        android:layout_weight="1" />
+
+                    <Button
+                        style="@style/AppTheme.KeyBoard.OperacoesButtons"
+                        android:layout_height="match_parent"
+                        android:text="@string/keyboard_resto"
+                        android:id="@+id/btn_keyboard_resto"
+                        android:layout_weight="1" />
 
                 </LinearLayout>
 
@@ -130,10 +130,9 @@
                 <ImageButton
                     style="@style/AppTheme.KeyBoard.ApagarButton"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_delete"
-                    android:id="@+id/btn_keyboard_apagar"
+                    android:src="@drawable/ic_delete_all"
+                    android:id="@+id/btn_keyboard_apagar_tudo"
                     android:layout_weight="1" />
-
 
             </LinearLayout>
 
@@ -164,12 +163,13 @@
                     android:id="@+id/btn_keyboard_6"
                     android:layout_weight="1" />
 
-                <Button
-                    style="@style/AppTheme.KeyBoard.OperacoesButtons"
+                <ImageButton
+                    style="@style/AppTheme.KeyBoard.ApagarButton"
                     android:layout_height="match_parent"
-                    android:text="@string/keyboard_raiz"
-                    android:id="@+id/btn_keyboard_raiz"
+                    android:src="@drawable/ic_delete"
+                    android:id="@+id/btn_keyboard_apagar"
                     android:layout_weight="1" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -202,8 +202,8 @@
                 <Button
                     style="@style/AppTheme.KeyBoard.OperacoesButtons"
                     android:layout_height="match_parent"
-                    android:text="@string/keyboard_mudar_sinal"
-                    android:id="@+id/btn_keyboard_mudar_sinal"
+                    android:text="@string/keyboard_raiz"
+                    android:id="@+id/btn_keyboard_raiz"
                     android:layout_weight="1" />
             </LinearLayout>
 
@@ -212,7 +212,6 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
-
 
                 <Button
                     style="@style/AppTheme.KeyBoard.NumberButtons"
@@ -229,18 +228,12 @@
                     android:id="@+id/btn_keyboard_ponto" />
 
                 <Button
-                    style="@style/AppTheme.KeyBoard.NumberButtons"
+                    style="@style/AppTheme.KeyBoard.Igual"
                     android:layout_height="match_parent"
                     android:text="@string/keyboard_igual"
                     android:id="@+id/btn_keyboard_igual"
-                    android:layout_weight="1" />
+                    android:layout_weight="2" />
 
-                <Button
-                    style="@style/AppTheme.KeyBoard.OperacoesButtons"
-                    android:layout_height="match_parent"
-                    android:text="@string/keyboard_resto"
-                    android:id="@+id/btn_keyboard_resto"
-                    android:layout_weight="1" />
             </LinearLayout>
         </LinearLayout>
 

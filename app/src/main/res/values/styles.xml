@@ -35,10 +35,16 @@
         <item name="android:foreground">@drawable/button_operacoes</item>
     </style>
 
+    <style name="AppTheme.KeyBoard.Igual">
+        <item name="android:textSize">@dimen/keyboard</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:background">@color/colorKeyBoarOperacoesEspeciaisNormal</item>
+        <item name="android:foreground">@drawable/button_operacoes_especiais</item>
+    </style>
+
     <style name="AppTheme.KeyBoard.OperacoesButtons.Memory">
         <item name="android:textSize">@dimen/operation_memory</item>
     </style>
-
 
     <style name="AppTheme.KeyBoard.OperacoesEspeciaisButtons">
         <item name="android:fontFamily">sans-serif-condensed</item>

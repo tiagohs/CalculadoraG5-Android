@@ -10,7 +10,6 @@ public interface CalculadoraView {
     void apagarUltimaValor();
     void displayInputPrincipal(String valor);
     void displayInputSecundario(String valor);
-    void onClickKeyBoard(View view);
-    void onClickOperador(View view);
-    void onClickEquals();
+    void setErrorFormat();
+    void setSucessFormat();
 }

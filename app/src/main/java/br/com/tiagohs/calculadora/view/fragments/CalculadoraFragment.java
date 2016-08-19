@@ -1,5 +1,6 @@
 package br.com.tiagohs.calculadora.view.fragments;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -16,7 +17,6 @@ import br.com.tiagohs.calculadora.util.OperationType;
 import br.com.tiagohs.calculadora.view.CalculadoraView;
 import butterknife.BindView;
 import butterknife.OnClick;
-import butterknife.OnLongClick;
 
 public class CalculadoraFragment extends BaseFragment implements CalculadoraView {
     private static final String TAG = CalculadoraFragment.class.getSimpleName();
@@ -109,15 +109,15 @@ public class CalculadoraFragment extends BaseFragment implements CalculadoraView
         return R.layout.calculadora_fragment;
     }
 
-    @OnLongClick(R.id.btn_keyboard_apagar)
-    public boolean apagarTudo() {
+    @OnClick(R.id.btn_keyboard_apagar_tudo)
+    public void apagarTudo() {
         presenter.apagarTudo(mInputPrincipal.getText().toString(), mInputSecundario.getText().toString());
-        return true;
     }
 
-    @Override
+    @OnClick(R.id.btn_keyboard_apagar)
     public void apagarUltimaValor() {
-        presenter.apagarUltimoValorInputPrincipal(mInputPrincipal.getText().toString());
+        presenter.apagarUltimoValorInputPrincipal(mInputSecundario.getText().toString());
+        updateInput("");
     }
 
     @Override
@@ -132,40 +132,113 @@ public class CalculadoraFragment extends BaseFragment implements CalculadoraView
 
     @OnClick({R.id.btn_keyboard_1, R.id.btn_keyboard_2, R.id.btn_keyboard_3,
             R.id.btn_keyboard_4, R.id.btn_keyboard_5, R.id.btn_keyboard_6,
-            R.id.btn_keyboard_7, R.id.btn_keyboard_8, R.id.btn_keyboard_9, R.id.btn_keyboard_0})
-    public void onClickKeyBoard(View view) {
-        presenter.onCheckKeyboard(((Button) view).getText().toString(), mInputPrincipal.getText().toString());
+            R.id.btn_keyboard_7, R.id.btn_keyboard_8, R.id.btn_keyboard_9, R.id.btn_keyboard_0,
+            R.id.btn_keyboard_parenteses_direito, R.id.btn_keyboard_parenteses_esquerdo})
+    public void onClickKeyBoard(final View view) {
+        updateInput(((Button) view).getText().toString());
+    }
+
+    private void updateInput(String novoInput) {
+        presenter.onCheckKeyboard(novoInput, mInputSecundario.getText().toString());
     }
 
     @OnClick({R.id.btn_keyboard_apagar, R.id.btn_keyboard_soma, R.id.btn_keyboard_subt,
-            R.id.btn_keyboard_mult, R.id.btn_keyboard_div})
+              R.id.btn_keyboard_mult, R.id.btn_keyboard_div, R.id.btn_keyboard_raiz,
+              R.id.btn_keyboard_resto, R.id.btn_log,
+              R.id.btn_cos, R.id.btn_arco_cos, R.id.btn_sen, R.id.btn_arco_seno,
+              R.id.btn_tan, R.id.btn_arco_tan, R.id.btn_arco_cot, R.id.btn_arco_coss, R.id.btn_arco_sec})
     public void onClickOperador(View view) {
+        String displaySubAtual = mInputSecundario.getText().toString();
 
         switch (view.getId()) {
             case R.id.btn_keyboard_soma:
-                onClickOperador(OperationType.SOMA);
+                presenter.onCheckOperador(OperationType.SOMA, displaySubAtual);
                 break;
             case R.id.btn_keyboard_subt:
-                onClickOperador(OperationType.SUBTRACAO);
+                presenter.onCheckOperador(OperationType.SUBTRACAO, displaySubAtual);
                 break;
             case R.id.btn_keyboard_mult:
-                onClickOperador(OperationType.MULTIPLICACAO);
+                presenter.onCheckOperador(OperationType.MULTIPLICACAO, displaySubAtual);
                 break;
             case R.id.btn_keyboard_div:
-                onClickOperador(OperationType.DIVISAO);
+                presenter.onCheckOperador(OperationType.DIVISAO, displaySubAtual);
                 break;
-            case R.id.btn_keyboard_apagar:
-                apagarUltimaValor();
+            case R.id.btn_keyboard_raiz:
+                presenter.onCheckOperador(OperationType.RAIZ_QUADRADA, displaySubAtual);
+                break;
+            case R.id.btn_keyboard_resto:
+                presenter.onCheckOperador(OperationType.RESTO, displaySubAtual);
+                break;
+            case R.id.btn_log:
+                presenter.onCheckOperador(OperationType.LOG, displaySubAtual);
+                break;
+            case R.id.btn_cos:
+                presenter.onCheckOperador(OperationType.COSSENO, displaySubAtual);
+                break;
+            case R.id.btn_arco_cos:
+                presenter.onCheckOperador(OperationType.ARCO_COSSENO, displaySubAtual);
+                break;
+            case R.id.btn_sen:
+                presenter.onCheckOperador(OperationType.SENO, displaySubAtual);
+                break;
+            case R.id.btn_arco_seno:
+                presenter.onCheckOperador(OperationType.ARCO_SENO, displaySubAtual);
+                break;
+            case R.id.btn_tan:
+                presenter.onCheckOperador(OperationType.TANGENTE, displaySubAtual);
+                break;
+            case R.id.btn_arco_tan:
+                presenter.onCheckOperador(OperationType.ARCO_TANGENTE, displaySubAtual);
+                break;
+            case R.id.btn_arco_cot:
+                presenter.onCheckOperador(OperationType.COTANGENTE, displaySubAtual);
+                break;
+            case R.id.btn_arco_coss:
+                presenter.onCheckOperador(OperationType.COSSECANTE, displaySubAtual);
+                break;
+            case R.id.btn_arco_sec:
+                presenter.onCheckOperador(OperationType.SECANTE, displaySubAtual);
                 break;
         }
 
     }
 
-    private void onClickOperador(OperationType operacaoAtual) {
-        String displayAtual = mInputPrincipal.getText().toString();
-        String displaySub = mInputSecundario.getText().toString();
+    @OnClick({R.id.btn_keyboard_mudar_sinal, R.id.btn_keyboard_ponto, R.id.btn_euler,
+              R.id.btn_pi})
+    public void onClickOperadorEspecial(View view) {
 
-        presenter.onCheckOperation(displayAtual, displaySub, operacaoAtual);
+        switch (view.getId()) {
+            case R.id.btn_keyboard_mudar_sinal:
+                presenter.onCheckOperadorEspecial(OperationType.CHANGE_SINAL, mInputPrincipal.getText().toString());
+                break;
+            case R.id.btn_keyboard_ponto:
+                presenter.onCheckOperadorEspecial(OperationType.PONTO, mInputSecundario.getText().toString());
+                break;
+            case R.id.btn_pi:
+                presenter.onCheckOperadorEspecial(OperationType.PI, mInputSecundario.getText().toString());
+                break;
+            case R.id.btn_euler:
+                presenter.onCheckOperadorEspecial(OperationType.EULER, mInputSecundario.getText().toString());
+                break;
+        }
+    }
+
+    public void setErrorFormat() {
+        setColors(android.R.color.holo_red_dark);
+    }
+
+    public void setSucessFormat() {
+        setColors(android.R.color.black);
+    }
+
+    private void setColors(int idColor) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            mInputPrincipal.setTextColor(getResources().getColor(idColor, null));
+            mInputSecundario.setTextColor(getResources().getColor(idColor, null));
+        } else {
+            mInputPrincipal.setTextColor(getResources().getColor(idColor));
+            mInputSecundario.setTextColor(getResources().getColor(idColor));
+        }
     }
 
     @OnClick(R.id.btn_keyboard_igual)

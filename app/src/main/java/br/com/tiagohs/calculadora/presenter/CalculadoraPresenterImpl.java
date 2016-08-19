@@ -1,9 +1,5 @@
 package br.com.tiagohs.calculadora.presenter;
 
-import android.util.Log;
-
-import java.math.BigDecimal;
-
 import br.com.tiagohs.calculadora.interactor.CalculadoraInteractor;
 import br.com.tiagohs.calculadora.interactor.CalculadoraInteractorImpl;
 import br.com.tiagohs.calculadora.util.OperationType;
@@ -14,27 +10,23 @@ public class CalculadoraPresenterImpl implements CalculadoraPresenter, Calculado
 
     CalculadoraInteractor mCalculadoraInteractor;
 
-    private boolean mIsResultado;
-    private boolean isContinueCalc;
-    private BigDecimal mCurrentNumber;
-    private OperationType mOperation;
+    private String mFunctionInput;
 
     public CalculadoraPresenterImpl() {
         mCalculadoraInteractor = new CalculadoraInteractorImpl();
+        mFunctionInput = "";
     }
 
     @Override
     public void setView(CalculadoraView view) {
         this.mView = view;
-        this.mIsResultado = false;
-        this.isContinueCalc = false;
     }
 
     @Override
     public void apagarTudo(String valorAtual, String valorSubAtual) {
-        mCurrentNumber = null;
 
         if (containsValores(valorAtual) || containsValores(valorSubAtual)) {
+            mFunctionInput = "";
             mView.displayInputPrincipal("");
             mView.displayInputSecundario("");
         }
@@ -45,89 +37,76 @@ public class CalculadoraPresenterImpl implements CalculadoraPresenter, Calculado
         if (valorAtual.length() == 1)
             mView.displayInputSecundario("");
 
-        if (containsValores(valorAtual))
-            mView.displayInputPrincipal(valorAtual.substring(0, valorAtual.length() - 1));
-        else
-            mView.displayInputPrincipal("");
+        if (containsValores(valorAtual)) {
+            mFunctionInput = mFunctionInput.substring(0, valorAtual.length() - 1);
+            mView.displayInputSecundario(valorAtual.substring(0, valorAtual.length() - 1));
+        } else
+            mView.displayInputSecundario("");
     }
 
     private boolean containsValores(String valorAtual) {
         return !valorAtual.isEmpty() && valorAtual.length() > 0;
     }
 
-    public void onCheckKeyboard(String novoValor, String valorAtual) {
+    public void onCheckKeyboard(String novoValor, String displayAtual) {
+        mView.displayInputSecundario(displayAtual + novoValor);
 
-        if (isContinueCalc) {
-            mView.displayInputPrincipal(novoValor);
-            isContinueCalc = false;
-        } else if (mIsResultado) {
-            mView.displayInputPrincipal(valorAtual);
-            mIsResultado = false;
-        } else {
-            String valorResultante = valorAtual + novoValor;
-            mView.displayInputPrincipal(valorResultante);
-        }
-
-    }
-
-    public void onCheckOperation(String displayAtual, String displaySub, OperationType operacaoAtual) {
-        mOperation = operacaoAtual;
-
-        if (isDisplayEmpty(displayAtual)) {
-            mView.displayInputSecundario(displayAtual + " " + operacaoAtual.getSymbol() + " ");
-            return;
-        }
-
-        if (mCurrentNumber == null)
-            updateDisplay(displayAtual, displaySub);
-        else
-            onCalculateAndUpdateDisplay(displayAtual, displaySub);
-    }
-
-    private void updateDisplay(String displayAtual, String displaySub) {
-        mCurrentNumber = new BigDecimal(displayAtual);
-        mView.displayInputPrincipal("");
-
-        if (displaySub.isEmpty())
-            mView.displayInputSecundario(mCurrentNumber.toString() + " " + mOperation.getSymbol() + " ");
-        else
-            mView.displayInputPrincipal(displaySub + " " + mOperation.getSymbol() + " ");
-
-    }
-
-    private void onCalculateAndUpdateDisplay(String displayAtual, String displayAnterior) {
-        mView.displayInputSecundario(displayAnterior + " " + displayAtual + " " + mOperation.getSymbol());
-        mCalculadoraInteractor.calcular(mCurrentNumber, new BigDecimal(displayAtual), mOperation, this);
-        isContinueCalc = true;
-    }
-
-    private boolean isDisplayEmpty(String displayAtual) {
-        return displayAtual.isEmpty();
+        mFunctionInput += novoValor;
+        mCalculadoraInteractor.calcular(mFunctionInput, this);
     }
 
     @Override
-    public void onCalculatorSucess(BigDecimal result) {
-        mCurrentNumber = result;
-        mView.displayInputPrincipal(mCurrentNumber.toString());
+    public void onCheckOperador(OperationType operationType, String displayAtual) {
 
-        if (mIsResultado) {
-            mView.displayInputSecundario("");
-            mCurrentNumber = null;
-            mIsResultado = false;
-        }
+        mView.displayInputSecundario(displayAtual + operationType.getSymbolFormatado());
+        mFunctionInput += operationType.getSymbol();
 
+        mCalculadoraInteractor.calcular(mFunctionInput, this);
     }
 
+    @Override
     public void onCheckResult(String displayAtual) {
 
         if (containsValores(displayAtual)) {
-            Log.i("Prenter", "Entrou");
-            mIsResultado = true;
-            mCalculadoraInteractor.calcular(mCurrentNumber, new BigDecimal(displayAtual), mOperation, this);
+            mView.displayInputSecundario("");
         }
     }
 
-    public void onCalculatorError() {
+    @Override
+    public void onCheckOperadorEspecial(OperationType operacaoEspecial, String displayAtual) {
 
+        switch (operacaoEspecial) {
+            case CHANGE_SINAL:
+                if (containsValores(displayAtual)) {
+                    Double valor = -(Double.parseDouble(displayAtual));
+                    mView.displayInputPrincipal(valor.toString());
+                }
+                break;
+            case PONTO:
+                if (displayAtual.indexOf(".") == -1) {
+                    if (displayAtual.length() > 0)
+                        mView.displayInputSecundario(displayAtual + ".");
+                    else
+                        mView.displayInputSecundario(displayAtual + "0.");
+                }
+                break;
+            case PI:
+                onCheckKeyboard(Double.toString(Math.PI), displayAtual);
+                break;
+            case EULER:
+                onCheckKeyboard(Double.toString(Math.E), displayAtual);
+                break;
+        }
+
+    }
+
+    @Override
+    public void onCalculatorSucess(Double result) {
+        mView.setSucessFormat();
+        mView.displayInputPrincipal(result.toString());
+    }
+
+    public void onCalculatorError() {
+        mView.setErrorFormat();
     }
 }

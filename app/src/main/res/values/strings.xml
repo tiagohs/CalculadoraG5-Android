@@ -23,6 +23,8 @@
     <string name="keyboard_m_recall" translatable="false">MR</string>
 
     <!-- KeyBoard Operações -->
+    <string name="keyboard_parenteses_direito" translatable="false">)</string>
+    <string name="keyboard_parenteses_esquerdo" translatable="false">(</string>
     <string name="keyboard_ponto" translatable="false">.</string>
     <string name="keyboard_igual" translatable="false">=</string>
     <string name="keyboard_somar" translatable="false">+</string>
@@ -70,4 +72,7 @@
     <string name="menu_primo">Primos</string>
     <string name="menu_regra_tres">Regra de Três</string>
     <string name="menu_fracoes">Frações</string>
+    <string name="keyboard_pi">π</string>
+    <string name="keyboard_euler">e</string>
+
 </resources>

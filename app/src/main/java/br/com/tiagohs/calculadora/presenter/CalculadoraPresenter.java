@@ -10,8 +10,9 @@ public interface CalculadoraPresenter {
 
     void setView(CalculadoraView view);
     void apagarUltimoValorInputPrincipal(String valorAtual);
-    void onCheckOperation(String displayAtual, String displaySub, OperationType operacaoAtual);
-    void onCheckKeyboard(String novoValor, String valorAtual);
+    void onCheckKeyboard(String novoValor, String displayAtual);
+    void onCheckOperador(OperationType operationType, String displayAtual);
     void onCheckResult(String displayAtual);
+    void onCheckOperadorEspecial(OperationType operacaoEspecial, String displayAtual);
     void apagarTudo(String valorAtual, String valorSubAtual);
 }

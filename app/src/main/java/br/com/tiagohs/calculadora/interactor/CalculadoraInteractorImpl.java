@@ -2,11 +2,11 @@ package br.com.tiagohs.calculadora.interactor;
 
 import android.util.Log;
 
-import java.math.BigDecimal;
-
+import br.com.tiagohs.calculadora.model.Equacao;
 import br.com.tiagohs.calculadora.service.CalculadoraService;
 import br.com.tiagohs.calculadora.service.CalculadoraServiceImpl;
-import br.com.tiagohs.calculadora.util.OperationType;
+import br.com.tiagohs.calculadora.util.EquacaoVariavelInexistenteException;
+import br.com.tiagohs.calculadora.util.SintaxeEquacaoIncorretaException;
 
 public class CalculadoraInteractorImpl implements CalculadoraInteractor {
     private static final String TAG = CalculadoraInteractorImpl.class.getSimpleName();
@@ -17,31 +17,21 @@ public class CalculadoraInteractorImpl implements CalculadoraInteractor {
         mCalculadoraService = new CalculadoraServiceImpl();
     }
 
-    public void calcular(BigDecimal valor1, BigDecimal valor2, OperationType operacao, OnCalculadoraListener listener) {
+    @Override
+    public void calcular(String funcao, OnCalculadoraListener listener) {
 
         try {
-            switch (operacao) {
-                case SOMA:
-                    listener.onCalculatorSucess(mCalculadoraService.operacaodeSoma(valor1, valor2));
-                    break;
-                case SUBTRACAO:
-                    listener.onCalculatorSucess(mCalculadoraService.operacaodeSubtracao(valor1, valor2));
-                    break;
-                case MULTIPLICACAO:
-                    listener.onCalculatorSucess(mCalculadoraService.operacaodeMultiplicacao(valor1, valor2));
-                    break;
-                case DIVISAO:
-                    listener.onCalculatorSucess(mCalculadoraService.operacaodeDivisao(valor1, valor2));
-                    break;
-            }
-        } catch (NullPointerException e) {
-            Log.e(TAG, "Não é aceito valores vazios.", e);
+            Equacao equacao = new Equacao(funcao);
+            double result = equacao.evaluate();
+            listener.onCalculatorSucess(result);
+            Log.i(TAG, "Result: " + result);
+        } catch (SintaxeEquacaoIncorretaException e) {
+            Log.e(TAG, "Função com Sintaxe Incorreta: " + funcao);
+            listener.onCalculatorError();
+        } catch (EquacaoVariavelInexistenteException e) {
+            Log.e(TAG, "Função com Variavel inexistente: " + funcao);
             listener.onCalculatorError();
         }
-
     }
 
-    public void calcular(BigDecimal valor, OperationType operacao, OnCalculadoraListener listener) {
-
-    }
 }

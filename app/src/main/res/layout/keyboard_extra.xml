@@ -116,7 +116,7 @@
             style="@style/AppTheme.KeyBoard.OperacoesEspeciaisButtons"
             android:layout_height="match_parent"
             android:text="@string/keyboard_log"
-            android:id="@+id/btn_arco_log"
+            android:id="@+id/btn_log"
             android:layout_weight="1" />
     </LinearLayout>
 
@@ -131,8 +131,8 @@
         <Button
             style="@style/AppTheme.KeyBoard.OperacoesEspeciaisButtons"
             android:layout_height="match_parent"
-            android:text="@string/keyboard_mod"
-            android:id="@+id/btn_mod"
+            android:text="@string/keyboard_pi"
+            android:id="@+id/btn_pi"
             android:layout_weight="1" />
 
         <Button
@@ -145,9 +145,9 @@
         <Button
             style="@style/AppTheme.KeyBoard.OperacoesEspeciaisButtons"
             android:layout_height="match_parent"
-            android:text="@string/keyboard_int"
-            android:id="@+id/btn_int"
-            android:layout_weight="1" />
+            android:text="@string/keyboard_euler"
+            android:layout_weight="1"
+            android:id="@+id/btn_euler" />
 
         <Button
             style="@style/AppTheme.KeyBoard.OperacoesEspeciaisButtons"

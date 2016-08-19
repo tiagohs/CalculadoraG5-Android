@@ -6,8 +6,8 @@
     <color name="black_alpha_40">#01ffffff</color>
 
     <!-- teclas -->
-    <color name="colorKeyBoarNumberNormal">#5c5c5c</color>
-    <color name="colorKeyBoarNumberPressionado">#9e9e9e</color>
+    <color name="colorKeyBoarNumberNormal">#757575</color>
+    <color name="colorKeyBoarNumberPressionado">#c3dcdbdb</color>
     <color name="colorKeyBoarOperacoesNormal">@color/colorPrimary</color>
     <color name="colorKeyBoarOperacoesPressionado">#7986cb</color>
     <color name="colorKeyBoarOperacoesEspeciaisNormal">#673ab7</color>
